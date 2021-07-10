@@ -1,0 +1,64 @@
+@import url('https://fonts.googleapis.com/css?family=Lobster');
+
+body {
+	margin: 0px;
+}
+
+.text-animation-container {
+	filter: url(#threshold) blur(0.2px);
+}
+
+.text-animation1, .text-animation2 {
+	position: absolute;
+	width: 100%;
+	display: inline-block;
+	
+	font-family: 'Lobster', sans-serif;
+	font-size: 80pt;
+	
+	text-align: center;
+	
+	user-select: none;
+}
+
+@media (max-width: 500px) {
+  .text-animation1, .text-animation2 {
+    font-size: 60pt;
+  }
+}
+
+
+.drag-title {
+  font-weight: 600;
+  margin: 7px;
+  padding: 10px;
+}
+
+.drag {
+  user-select: none;
+  outline: none;
+  margin: 7px;
+  padding: 10px;
+  cursor: pointer !important;
+  display: flex;
+  justify-content: space-between;
+}
+
+.drag-item {
+  background: white;
+  border-bottom: 1px solid #aaa;
+  border-radius: 3px;
+}
+
+.drag-list {
+  min-width: 280px;
+  margin: 10px 5px;
+  position: relative;
+  background: #dfe1e6;
+}
+
+.ghost {
+  opacity: .1;
+  color: #000;
+  background-color: #000;
+}

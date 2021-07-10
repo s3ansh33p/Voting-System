@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <!-- ./components/header.php -->
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="SRV_DESC" />
+        <meta name="author" content="Sean McGinty" />
+        <title>PAGE_NAME | SRV_ABBR</title>
+        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <link rel="stylesheet" href="./css/styles.css">
+
+    </head>
+    <body>
+
+        <!-- ./components/nav.php -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container px-4 px-lg-5">
+                <a class="navbar-brand" href="./">SRV_NAME</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="./vote">Vote</a></li>
+                        <li class="nav-item"><a class="nav-link" href="./results">Results</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <header class="bg-dark py-3">
+            <div class="container px-4 px-lg-5 my-5">
+                <div class="text-white">
+                                        
+                    <div class="text-animation-container">
+                        <span class="text-animation1"></span>
+                        <span class="text-animation2"></span>
+                    </div>
+                    
+                    <svg id="filters">
+                        <defs>
+                            <filter id="threshold">
+                                <feColorMatrix in="SourceGraphic"
+                                        type="matrix"
+                                        values="1 0 0 0 0
+                                                        0 1 0 0 0
+                                                        0 0 1 0 0
+                                                        0 0 0 255 -140" />
+                            </filter>
+                        </defs>
+                    </svg>
+                </div>
+            </div>
+        </header>
+
+        <section class="py-5">
+            <div class="container px-4 px-lg-5 mt-5">
+                <div class="drag-list">
+                    <div class="drag-title">This is a list</div>
+                    <div class="drag-item-container">
+                      <div class="drag-item drag">1st</div>
+                      <div class="drag-item drag">2nd</div>
+                      <div class="drag-item drag">3rd</div>
+                      <div class="drag-item drag">4th</div>
+                      <div class="drag-item drag">5th</div>
+                      <div class="drag-item drag">6th</div>
+                      <div class="drag-item drag">7th</div>
+                    </div>
+                </div>
+                
+            </div>
+        </section>
+
+        <!-- ./components/footer.php -->
+        <footer class="py-3 bg-dark">
+            <div class="container"><p class="m-0 text-center text-white">Copyright &copy; Sean McGinty 2021</p></div>
+        </footer>
+        <script src='https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js'></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="js/scripts.js"></script>
+    </body>
+</html>
