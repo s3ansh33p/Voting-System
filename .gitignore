@@ -1,0 +1,5 @@
+# Contains OAuth Application ID
+id.env
+
+# Contains OAuth Application Secret
+secret.env

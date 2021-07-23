@@ -1,33 +1,16 @@
+<?php include_once('config.php'); ?>
 <!DOCTYPE html>
 <html lang="en">
 
-    <!-- ./components/header.php -->
     <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta name="description" content="SRV_DESC" />
-        <meta name="author" content="Sean McGinty" />
-        <title>PAGE_NAME | SRV_ABBR</title>
-        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-        <link rel="stylesheet" href="./css/styles.css">
-
+        <?php
+            $PAGE_NAME = 'Home';
+            include_once(GLOBAL_URL.'/components/header.php');
+        ?>
     </head>
     <body>
 
-        <!-- ./components/nav.php -->
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <div class="container px-4 px-lg-5">
-                <a class="navbar-brand" href="./">SRV_NAME</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
-                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="./vote">Vote</a></li>
-                        <li class="nav-item"><a class="nav-link" href="./results">Results</a></li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
+        <?php include_once(GLOBAL_URL.'/components/nav.php'); ?>
 
         <header class="bg-dark py-3">
             <div class="container px-4 px-lg-5 my-5">
@@ -68,7 +51,6 @@
                       <div class="drag-item drag">7th</div>
                     </div>
                 </div>
-                
             </div>
         </section>
 
