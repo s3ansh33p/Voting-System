@@ -1,4 +1,4 @@
--- Sean McGinty <newfolderlocation@gmail.com> 23/07/2021
+-- Sean McGinty <newfolderlocation@gmail.com> 24/07/2021
 
 CREATE DATABASE IF NOT EXISTS voting;
 USE voting;
@@ -7,11 +7,12 @@ USE voting;
 CREATE TABLE IF NOT EXISTS categories (
     id int(8) PRIMARY KEY AUTO_INCREMENT NOT NULL,
     catName text(32) NOT NULL,
+    descriptor text(255),
     added timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 
--- Insert null category
-INSERT INTO categories (id, catName) VALUES (0, 'UNDEF');
+-- Insert voting categories
+INSERT INTO categories (catName, descriptor) VALUES ('Best Scene', 'What do you think was the best scene'), ('Best Character', 'Who do you think was the best character');
 
 -- Nominations Table
 CREATE TABLE IF NOT EXISTS nominations (
@@ -21,21 +22,20 @@ CREATE TABLE IF NOT EXISTS nominations (
     added timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 
--- Insert null nomination
-INSERT INTO nominations (id, nomName, nomCat) VALUES (0, 'UNDEF', 0);
+-- Insert voting nominations
+INSERT INTO nominations (nomName, nomCat) VALUES ('Some Scene I', 1), ('Another Scene II', 1), ('Another Scene III', 1), ('Another Scene V', 1), ('Another Scene V', 1), ('Another Scene VI', 1), ('Another Scene VII', 1);
 
 -- Users Table -> Discord oAuth
 CREATE TABLE IF NOT EXISTS users (
-    id int(8) PRIMARY KEY AUTO_INCREMENT NOT NULL,
-    userid int (16) NOT NULL,
+    id bigint(8) PRIMARY KEY AUTO_INCREMENT NOT NULL,
     username text(32) NOT NULL,
     discriminator text(4) NOT NULL,
-    avatar text(255),
+    avatar text(32),
     added timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
     isAdmin tinyint(1) NOT NULL DEFAULT 0
 );
 
--- Votes Table
+-- Votes Table (Always 7 nominations per category so I can be lazy)
 CREATE TABLE IF NOT EXISTS votes (
     id int(8) PRIMARY KEY AUTO_INCREMENT NOT NULL,
     nomCat int (8) NOT NULL,
@@ -46,5 +46,6 @@ CREATE TABLE IF NOT EXISTS votes (
     nomName5 int (8) NOT NULL DEFAULT 0,
     nomName6 int (8) NOT NULL DEFAULT 0,
     nomName7 int (8) NOT NULL DEFAULT 0,
-    added timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+    added timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    userid bigint(8) NOT NULL
 );

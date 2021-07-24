@@ -32,6 +32,8 @@ body {
   font-weight: 600;
   margin: 7px;
   padding: 10px;
+  margin-bottom: 0;
+  padding-bottom: 0;
 }
 
 .drag {
@@ -50,6 +52,10 @@ body {
   border-radius: 3px;
 }
 
+.drag-item-container {
+  padding: 4px;
+}
+
 .drag-list {
   min-width: 280px;
   margin: 10px 5px;
@@ -61,4 +67,10 @@ body {
   opacity: .1;
   color: #000;
   background-color: #000;
+}
+
+.avatar {
+  height: 24px;
+  border-radius: 50%;
+  vertical-align: middle;
 }

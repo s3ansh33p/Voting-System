@@ -21,7 +21,7 @@ if (get('action') == 'login') {
 
 if (get('action') == 'logout') {
     session_destroy();
-    header('Location: ' . $_SERVER['PHP_SELF']);
+    header('Location: ' . SITE_URL . '/auth');
     die();
 }
 
@@ -46,18 +46,29 @@ if (get('code')) {
 }
 
 if(session('access_token')) {
-  $user = apiRequest(URL_BASE, false, '');
+    $user = apiRequest(URL_BASE, false, '');
+    $_SESSION['user'] = $user;
 
-  echo '<h3>Logged In</h3>';
-  echo '<h4>' . $user->username . '</h4>';
-  echo '<pre>';
-  print_r($user);
-  echo '</pre>';
-  echo '<p><a href="?action=logout">Log Out</a></p>';
+    // Insert info into db
+    include_once(GLOBAL_URL.'/server/connect.php');
+    
+    if (!$conn) {
+        die("Connection failed: " . mysqli_connect_error());
+    }
+
+    $sql = "INSERT IGNORE INTO users (id, username, discriminator, avatar) VALUES ('$user->id', '$user->username', '$user->discriminator', '$user->avatar'); ";
+
+    $result = $conn->query($sql);
+
+    if (!$result) {
+        die('Could not query:' . mysqli_error($conn));
+    }
+
+    include_once(GLOBAL_URL.'/home.php');
 
 } else {
-  echo '<h3>Not logged in</h3>';
-  echo '<p><a href="?action=login">Log In</a></p>';
+    header('location: '.SITE_URL.'?action=login');
+    exit();
 }
 
 // Functions

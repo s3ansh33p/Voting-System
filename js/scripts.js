@@ -10,7 +10,7 @@ const elts = {
   text2: document.getElementsByClassName("text-animation2")[0]
 };
   
-  const texts = [
+const texts = [
   "Movie",
   "Awards",
   "2021"
