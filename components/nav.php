@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container px-4 px-lg-5">
-        <a class="navbar-brand" href="./">
+        <a class="navbar-brand" href="./">Home | 
             <img class="avatar" src="<?php echo 'https://cdn.discordapp.com/avatars/'.$_SESSION['user'] -> id.'/'.$_SESSION['user'] -> avatar; ?>">
             <?=$_SESSION['user'] -> username?>#<?=$_SESSION['user'] -> discriminator?>
         </a>
