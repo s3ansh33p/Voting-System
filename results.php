@@ -41,23 +41,30 @@
                                     <div class="card-body">
                                         <h3>Votes for '.$catNames[$i].'</h3>';
                                         if (isset($allResults[$i])) {
+                                            print_r($advancedResults[$i]);
                                             for ($j = 0; $j < 7; $j++) {
                                                 $colID++;
                                                 $keyIndex = array_keys($allResults[$i])[$j];
                                                 $sumVotes = array_sum($allResults[$i]);
                                                 $percent = (round($allResults[$i][$keyIndex] / $sumVotes * 10000) / 100);
-                                                echo '<div class="d-flex justify-content-between mt-3">
-                                                    <a data-bs-toggle="collapse" href="#col-'.$colID.'" role="button" aria-expanded="false" aria-controls="col-'.$colID.'">'.$nominations[array_keys($nominations)[$i]][$keyIndex].'</a>
+                                                echo '<div class="d-flex justify-content-between mt-3 mb-1">
+                                                    <a class="link-primary text-decoration-none" data-bs-toggle="collapse" href="#col-'.$colID.'" role="button" aria-expanded="false" aria-controls="col-'.$colID.'"><span>'.$nominations[array_keys($nominations)[$i]][$keyIndex].' <span class="text-warning">(Toggle advanced stats)</span></span></a>
                                                     <label>'.$percent.'%</label>
                                                 </div>
                                                 <div class="progress">
                                                     <div class="progress-bar" role="progressbar" style="width: '.$percent.'%" aria-valuenow="'.$percent.'" aria-valuemin="0" aria-valuemax="100"></div>
                                                 </div>
                                                 <label>'.$allResults[$i][$keyIndex].' points</label>';
-                                                echo '<div class="collapse" id="col-'.$colID.'">
-                                                <div class="card card-body mt-2">
-                                                    Some placeholder content for the collapse component. This panel is hidden by default but revealed when the user activates the relevant trigger.
-                                                </div>
+                                                echo '
+                                                <div class="collapse" id="col-'.$colID.'">
+                                                    <div class="card card-body mt-2">';
+                                                        for ($k = 0; $k < sizeof($advancedResults[$i]); $k++) {
+                                                            echo '
+                                                            <div class="d-flex">
+                                                            <img class="avatar me-1" src="https://cdn.discordapp.com/avatars/'.$advancedResults[$i][$k][7][1].'/'.$advancedResults[$i][$k][7][2].'">'.$advancedResults[$i][$k][7][0].'#'.$advancedResults[$i][$k][7][3].' gave '.SCORES[$advancedResults[$i][$k][$keyIndex]-1].' points
+                                                            </div>';
+                                                        };
+                                                    echo '</div>
                                                 </div>';
                                             }
                                         } else {

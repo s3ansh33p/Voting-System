@@ -50,9 +50,8 @@
 
         $voteCount = $result->num_rows;
 
-        // Change to points based system
-
         $allResults = Array();
+        $advancedResults = Array(Array());
 
         $preferences = [0, 0, 0, 0, 0, 0, 0];
         $curCat = 1;
@@ -65,12 +64,18 @@
                 array_push($allResults, $preferences);
                 $preferences = [0, 0, 0, 0, 0, 0, 0];
                 $curCat = $row["curCat"];
+                array_push($advancedResults, Array());
             }
             
 
             $votesArray = Array($row["nomName1"], $row["nomName2"], $row["nomName3"], $row["nomName4"], $row["nomName5"], $row["nomName6"], $row["nomName7"] );
             for ($i = 0; $i < 7; $i++) {
                 $preferences[$i] = $preferences[$i] + SCORES[$votesArray[$i]-1];
+                if ($i == 6) {
+                    $tmp = $votesArray;
+                    array_push($tmp, [$row["username"], $row["userid"], $row["avatar"], $row["discriminator"]]);
+                    array_push($advancedResults[$curCat-1], $tmp);
+                }
             }
 
         }
