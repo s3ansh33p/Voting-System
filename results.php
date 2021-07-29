@@ -30,34 +30,53 @@
                 <div class="row">
                 <?php
                         include_once(GLOBAL_URL.'/server/getResults.php');
-                        for ($i = 0; $i < sizeof($catNames); $i++) {
-                            echo '
-                            <div class="col-sm-6 mb-2">
-                            <div class="card">
-                                <div class="card-body">
-                                    <h3>Votes for '.$catNames[$i].'</h3>';
-                                    for ($j = 0; $j < 7; $j++) {
-                                        $curKeyIndex = array_keys($order)[$j];
-                                        $sumVotes = array_sum($order);
-                                        $percent = (round($order[$curKeyIndex] / $sumVotes * 10000) / 100);
-                                        echo '<div class="d-flex justify-content-between mt-3">
-                                            <label>'.$nominations[array_keys($nominations)[$i]][$curKeyIndex].'</label>
-                                            <label>'.$percent.'%</label>
-                                        </div>
-                                        <div class="progress">
-                                            <div class="progress-bar" role="progressbar" style="width: '.$percent.'%" aria-valuenow="'.$percent.'" aria-valuemin="0" aria-valuemax="100"></div>
-                                        </div>
-                                        <label>'.$order[$curKeyIndex].' votes</label>';
-                                    }
+                        if (!isset($allResults)) {
+                            echo '<h3 class="text-danger">No results</h3>';
+                        } else {
+                            $colID = 0;
+                            for ($i = 0; $i < sizeof($catNames); $i++) {
                                 echo '
+                                <div class="col-sm-6 mb-2">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h3>Votes for '.$catNames[$i].'</h3>';
+                                        if (isset($allResults[$i])) {
+                                            for ($j = 0; $j < 7; $j++) {
+                                                $colID++;
+                                                $keyIndex = array_keys($allResults[$i])[$j];
+                                                $sumVotes = array_sum($allResults[$i]);
+                                                $percent = (round($allResults[$i][$keyIndex] / $sumVotes * 10000) / 100);
+                                                echo '<div class="d-flex justify-content-between mt-3">
+                                                    <a data-bs-toggle="collapse" href="#col-'.$colID.'" role="button" aria-expanded="false" aria-controls="col-'.$colID.'">'.$nominations[array_keys($nominations)[$i]][$keyIndex].'</a>
+                                                    <label>'.$percent.'%</label>
+                                                </div>
+                                                <div class="progress">
+                                                    <div class="progress-bar" role="progressbar" style="width: '.$percent.'%" aria-valuenow="'.$percent.'" aria-valuemin="0" aria-valuemax="100"></div>
+                                                </div>
+                                                <label>'.$allResults[$i][$keyIndex].' points</label>';
+                                                echo '<div class="collapse" id="col-'.$colID.'">
+                                                <div class="card card-body mt-2">
+                                                    Some placeholder content for the collapse component. This panel is hidden by default but revealed when the user activates the relevant trigger.
+                                                </div>
+                                                </div>';
+                                            }
+                                        } else {
+                                            for ($j = 0; $j < 7; $j++) {
+                                                echo '<div class="d-flex justify-content-between mt-3">
+                                                    <label>'.$nominations[array_keys($nominations)[$i]][$j].'</label>
+                                                    <label>0%</label>
+                                                </div>
+                                                <div class="progress">
+                                                    <div class="progress-bar" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                                                </div>
+                                                <label>0 points</label>';
+                                            }
+                                        }
+                                    echo '
+                                    </div>
                                 </div>
-                            </div>
-                        </div>';
-                        print_r($preferences);
-                        echo '<br>';
-                        print_r($order);
-                        echo '<br>';
-                        print_r($calcArray);
+                            </div>';
+                            }
 
                         }
                 ?>

@@ -30,13 +30,15 @@
     $data = str_split(mysqli_real_escape_string($conn, $_GET['data']));
 
     // Check if the user hasn't already submitted a vote for the category
-    $sql = "SELECT id from votes WHERE nomCat='$sub_cat' and userid='$sub_userid'; ";
+    $sql = "SELECT userid from votes WHERE nomCat='$sub_cat' and userid='$sub_userid'; ";
 
     $result = $conn->query($sql);
 
     if (!$result) {
         die('Could not query:' . mysqli_error($conn));
     }
+
+    print_r($result);
 
     if ($result->num_rows > 0) {
         $sql = "UPDATE votes set nomCat = '$sub_cat', nomName1 = '$data[0]', nomName2 = '$data[1]', nomName3 = '$data[2]', nomName4 = '$data[3]', nomName5 = '$data[4]', nomName6 = '$data[5]', nomName7 = '$data[6]' WHERE userid = '$sub_userid'; ";

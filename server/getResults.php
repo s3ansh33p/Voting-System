@@ -38,7 +38,7 @@
 
     }
 
-    $sql = "SELECT v.nomCat, v.nomName1, v.nomName2, v.nomName3, v.nomName4, v.nomName5, v.nomName6, v.nomName7, v.userid, u.username, u.discriminator, u.avatar FROM votes v INNER JOIN users u on u.id = v.userid; ";
+    $sql = "SELECT v.nomCat as curCat, v.nomName1, v.nomName2, v.nomName3, v.nomName4, v.nomName5, v.nomName6, v.nomName7, v.userid, u.username, u.discriminator, u.avatar FROM votes v INNER JOIN users u on u.id = v.userid  ORDER BY v.nomCat; ";
 
     $result = $conn->query($sql);
 
@@ -49,56 +49,38 @@
     if ($result->num_rows > 0) {
 
         $voteCount = $result->num_rows;
-        $preferences = [
-            [12, 0, 0, 0, 0, 0, 0], // 1st Nom
-            [122, 0, 0, 0, 0, 0, 0],
-            [2, 0, 0, 0, 0, 0, 0],
-            [33, 0, 0, 0, 0, 0, 0],
-            [55, 0, 0, 0, 0, 0, 0],
-            [7, 0, 0, 0, 0, 0, 0],
-            [8, 0, 0, 0, 0, 0, 0]]; // 7th Nom
+
+        // Change to points based system
+
+        $allResults = Array();
+
+        $preferences = [0, 0, 0, 0, 0, 0, 0];
+        $curCat = 1;
      
         while($row = $result->fetch_assoc()) {
 
             // Get votes and add to tally
+            if ($curCat != $row["curCat"]) {
+                arsort($preferences);
+                array_push($allResults, $preferences);
+                $preferences = [0, 0, 0, 0, 0, 0, 0];
+                $curCat = $row["curCat"];
+            }
+            
+
             $votesArray = Array($row["nomName1"], $row["nomName2"], $row["nomName3"], $row["nomName4"], $row["nomName5"], $row["nomName6"], $row["nomName7"] );
             for ($i = 0; $i < 7; $i++) {
-                $preferences[$i][($votesArray[$i]-1)]++;
+                $preferences[$i] = $preferences[$i] + SCORES[$votesArray[$i]-1];
             }
 
         }
 
-        // Calculations
-        $order = Array();
-        $noTieBreaks = true;
-        $layer = 0;
-
-        while ($noTieBreaks) {
-            // Get nth layer value of each array
-            $calcArray = Array();
-            for ($i = 0; $i < sizeof($preferences); $i++) {
-                array_push($calcArray, $preferences[$i][$layer]);
-            }
-
-            $noTieBreaks = false;
-
-            arsort($calcArray);
-            if (count($calcArray) == count(array_unique($calcArray))) {
-                $order = $calcArray;
-            }
-        }
+        // Final push
+        arsort($preferences);
+        array_push($allResults, $preferences);
 
     }
 
     $conn->close();
-
-    function getMax($calcArray) {
-        $max = max($calcArray);
-        $keys = array_keys($calcArray, $max);
-        if (sizeof($keys) == 1) {
-            return $keys[0];
-        }
-        return 'DUPES';
-    }
 
 ?>
