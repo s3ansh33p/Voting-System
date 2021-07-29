@@ -41,7 +41,6 @@
                                     <div class="card-body">
                                         <h3>Votes for '.$catNames[$i].'</h3>';
                                         if (isset($allResults[$i])) {
-                                            print_r($advancedResults[$i]);
                                             for ($j = 0; $j < 7; $j++) {
                                                 $colID++;
                                                 $keyIndex = array_keys($allResults[$i])[$j];
@@ -60,8 +59,8 @@
                                                     <div class="card card-body mt-2">';
                                                         for ($k = 0; $k < sizeof($advancedResults[$i]); $k++) {
                                                             echo '
-                                                            <div class="d-flex">
-                                                            <img class="avatar me-1" src="https://cdn.discordapp.com/avatars/'.$advancedResults[$i][$k][7][1].'/'.$advancedResults[$i][$k][7][2].'">'.$advancedResults[$i][$k][7][0].'#'.$advancedResults[$i][$k][7][3].' gave '.SCORES[$advancedResults[$i][$k][$keyIndex]-1].' points
+                                                            <div class="d-flex my-1">
+                                                            <img class="avatar me-1" src="https://cdn.discordapp.com/avatars/'.$advancedResults[$i][$k][7][1].'/'.$advancedResults[$i][$k][7][2].'">'.$advancedResults[$i][$k][7][0].'#'.$advancedResults[$i][$k][7][3].' gave '.SCORES[$advancedResults[$i][$k][$keyIndex]-1].' points ('.$advancedResults[$i][$k][$keyIndex].date("S", mktime(0, 0, 0, 0, $advancedResults[$i][$k][$keyIndex], 0)).' choice)
                                                             </div>';
                                                         };
                                                     echo '</div>
