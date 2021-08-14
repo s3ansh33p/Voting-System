@@ -21,6 +21,7 @@
 
             include_once(GLOBAL_URL.'/components/nav.php');
             include_once(GLOBAL_URL.'/components/banner.php');
+            include_once(GLOBAL_URL.'/components/media.php');
 
         ?>
 
@@ -33,13 +34,14 @@
                         include_once(GLOBAL_URL.'/server/getVote.php');
 
                         if (isset($cname)) {
-
                             echo '
                             <div class="drag-list">
                                 <div class="drag-title">'.$cname.'</div>
                                 <div class="drag-item-container" id="c">';
                                 for ($i = 0; $i < sizeof($nominations); $i++) {
-                                    echo '<div class="drag-item drag" data="'.($i+1).'">'.($i+1).') '.$nominations[$i].'</div>';
+                                    echo '<div class="drag-item drag d-flex flex-column" data="'.($i+1).'">'.($i+1).') '.$nominations[$i].'
+                                    '.render($_GET["id"], ($i+1)).'
+                                    </div>';
                                 }
                                 echo '</div>
                             </div>
