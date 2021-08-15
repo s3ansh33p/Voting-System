@@ -52,7 +52,7 @@
             } else {
                 $cat = 2;
             }
-            $rendered .= '<a href="https://www.youtube.com/watch?v='.$GLOBALS["videoMap"][$cat][$id-1].'" target="_blank">https://www.youtube.com/watch?v='.$GLOBALS["videoMap"][$cat][$id-1].'</a><div class="video-container mt-2"><iframe src="https://www.youtube.com/embed/'.$GLOBALS["videoMap"][$cat][$id-1].'" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div></div></div>';
+            $rendered .= '<a href="https://www.youtube.com/watch?v='.$GLOBALS["videoMap"][$cat][$id-1].'" target="_blank">https://www.youtube.com/watch?v='.$GLOBALS["videoMap"][$cat][$id-1].'</a><div class="video-container mt-2 w-100"><iframe style="max-width:100%" src="https://www.youtube.com/embed/'.$GLOBALS["videoMap"][$cat][$id-1].'" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div></div></div>';
             return $rendered;
         } else {
             $ext = 'jpg';
