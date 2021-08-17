@@ -59,7 +59,7 @@
             if ($GLOBALS['imageMap'][$cat-1][$id-1] === 1) {
                 $ext = 'png';
             }
-            $rendered .= '<img style="max-height: 400px; width: fit-content; align-self: center;" src="'.SITE_URL.'/assets/'.$cat.'-'.$id.'.'.$ext.'">          
+            $rendered .= '<img style="max-height: 400px; width: fit-content; align-self: center; max-width: 100%;" src="'.SITE_URL.'/assets/'.$cat.'-'.$id.'.'.$ext.'">          
             </div>
           </div>';
           return $rendered;
