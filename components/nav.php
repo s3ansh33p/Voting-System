@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-light">
     <div class="container px-4 px-lg-5">
         <a class="navbar-brand" href="./">Home | 
             <img class="avatar" src="<?php echo 'https://cdn.discordapp.com/avatars/'.$_SESSION['user'] -> id.'/'.$_SESSION['user'] -> avatar; ?>">

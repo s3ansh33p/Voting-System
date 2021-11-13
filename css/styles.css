@@ -1,7 +1,60 @@
 @import url('https://fonts.googleapis.com/css?family=Lobster');
 
+/* Bootstrap Overides */
+:root {
+  --dark: #ac0662;
+  --bars: #c700ff;
+  --body: #ef377a;
+  --text: #ffffff;
+}
+
+.bg-dark {
+  background-color: var(--dark)!important;
+}
+
+.card {
+  background-color: var(--dark);
+  border: 1px solid white;
+}
+
+a {
+  color: var(--text)!important;
+}
+
+.navbar-toggler:focus {
+  box-shadow: none;
+}
+
+.navbar-light .navbar-toggler {
+  border: none;
+}
+
+.navbar-light .navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgb%28255, 255, 255%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+.progress-bar {
+  background-color: var(--bars);
+}
+
+.btn-dark {
+  color: var(--text);
+  background-color: var(--bars);
+  border-color: var(--bars);
+}
+
+.text-success {
+  color: #a3ff92!important;
+}
+
+.text-danger {
+  color: #ffc800!important;
+}
+
 body {
 	margin: 0px;
+  color: var(--text);
+  background-color: var(--body);
 }
 
 .text-animation-container {
@@ -47,8 +100,7 @@ body {
 }
 
 .drag-item {
-  background: white;
-  border-bottom: 1px solid #aaa;
+  background: var(--body);
   border-radius: 3px;
 }
 
@@ -60,7 +112,7 @@ body {
   min-width: 280px;
   margin: 10px 5px;
   position: relative;
-  background: #dfe1e6;
+  background: var(--dark);
 }
 
 .ghost {

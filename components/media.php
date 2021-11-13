@@ -42,7 +42,7 @@
 
     function render($cat, $id) {
 
-        $rendered = '<button class="btn btn-danger mt-2" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-media-'.$id.'" aria-expanded="false" aria-controls="collapse-media-'.$id.'">Show/Hide Media</button><div class="collapse" id="collapse-media-'.$id.'"><div class="card card-body">';
+        $rendered = '<button class="btn btn-dark mt-2" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-media-'.$id.'" aria-expanded="false" aria-controls="collapse-media-'.$id.'">Show/Hide Media</button><div class="collapse" id="collapse-media-'.$id.'"><div class="card card-body">';
         
         if ($GLOBALS['imageMap'][$cat-1] === []) {
             if ($cat == 5) {
