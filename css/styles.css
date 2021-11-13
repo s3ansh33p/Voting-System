@@ -2,10 +2,10 @@
 
 /* Bootstrap Overides */
 :root {
-  --dark: #ac0662;
+  --dark: #cf0b89;
   --bars: #c700ff;
-  --body: #ef377a;
-  --text: #ffffff;
+  --body: #ff2eb5;
+  --text: #ffffff; 
 }
 
 .bg-dark {
