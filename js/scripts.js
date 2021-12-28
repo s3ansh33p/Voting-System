@@ -11,9 +11,9 @@ const elts = {
 };
   
 const texts = [
+  "Barbie",
   "Movie",
-  "Awards",
-  "2021"
+  "Awards"
 ];
   
 const morphTime = 1;
