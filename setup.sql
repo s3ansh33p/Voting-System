@@ -1,4 +1,4 @@
--- Sean McGinty <newfolderlocation@gmail.com> 24/07/2021
+-- Sean McGinty <newfolderlocation@gmail.com> 25/06/2022
 
 CREATE DATABASE IF NOT EXISTS voting;
 USE voting;
@@ -43,6 +43,15 @@ CREATE TABLE IF NOT EXISTS votes (
     added timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
     userid bigint(8) NOT NULL
 );
+
+-- Config Table (just a single check for whether all votes are showing or not)
+CREATE TABLE IF NOT EXISTS config (
+    id int(8) PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    showVotes tinyint(1) NOT NULL DEFAULT 0
+);
+
+-- Default Config
+INSERT INTO config (id, showVotes) VALUES (1, 0);
 
 -- -- Insert voting categories
 -- INSERT INTO categories (catName, descriptor) VALUES ('Best Scene', 'What do you think was the best scene'), ('Best Character', 'Who do you think was the best character');

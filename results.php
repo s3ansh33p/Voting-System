@@ -29,6 +29,26 @@
                 <h1 class="text-center mb-4">Results</h1>
                 <div class="row">
                 <?php
+                    include_once(GLOBAL_URL.'/server/getStatus.php');                    
+
+                    if ($_SESSION['user'] -> id == ADMIN_ID) {
+                        if (isset($_SESSION['visibility'])) {
+                            unset($_SESSION['visibility']);
+                            echo "<h3 class='text-success text-center mb-5'>Visibility Updated</h3>";
+                        }
+                        echo '<div class="col-12 mb-4">
+                        <span>(Only you can see this) Results are ';
+                        if ($showVotes) {
+                            echo 'showing.';
+                        } else {
+                            echo 'hidden.';
+                        }
+                        echo ' <a href="'.SITE_URL.'/toggle">Click here to toggle visibility.</a></span>
+                        </div><br>';
+                        $showVotes = true;
+                    }   
+
+                    if ($showVotes) {
                         include_once(GLOBAL_URL.'/server/getResults.php');
                         if (!isset($allResults)) {
                             echo '<h3 class="text-danger">No results</h3>';
@@ -85,6 +105,9 @@
                             }
 
                         }
+                    } else {
+                        echo '<h3 class="text-danger">Please wait for '.ADMIN_NAME.' to show results.</h3>';
+                    }
                 ?>
                 </div>
             </div>
