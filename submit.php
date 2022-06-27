@@ -40,8 +40,9 @@
 
     print_r($result);
 
+    // if reults
     if ($result->num_rows > 0) {
-        $sql = "UPDATE votes set nomCat = '$sub_cat', nomName1 = '$data[0]', nomName2 = '$data[1]', nomName3 = '$data[2]', nomName4 = '$data[3]', nomName5 = '$data[4]', nomName6 = '$data[5]', nomName7 = '$data[6]' WHERE userid = '$sub_userid'; ";
+        $sql = "UPDATE votes set nomCat = '$sub_cat', nomName1 = '$data[0]', nomName2 = '$data[1]', nomName3 = '$data[2]', nomName4 = '$data[3]', nomName5 = '$data[4]', nomName6 = '$data[5]', nomName7 = '$data[6]' WHERE userid = '$sub_userid' AND nomCat = '$sub_cat'; ";
 
         $_SESSION['updated'] = true;
 
